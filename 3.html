@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Program Menghitung Kembalian</title>
+  </head>
+  <body>
+    <h2 align="center">Program Menghitung Kembalian uang</h2>
+
+    <script type="text/javascript">
+      function hitungKembalian(totalBelanja, jumlahUang) {
+      const arrPecahan = [50000, 20000, 10000, 5000, 2000, 1000, 500];
+      let arrJumlahPecahan = Array(arrPecahan.length).fill(0);
+      let kembalian = jumlahUang - totalBelanja;
+      let i = 0;
+
+      if (kembalian == 0) {
+        console.log("Tidak ada kembalian.");
+        return;
+      } else if (kembalian < 0) {
+        console.log("Jumlah uang tidak mencukupi");
+        return;
+        }
+      while (i < arrPecahan.length) {
+        let temp = kembalian - arrPecahan[i];
+        if (temp >= 0) {
+          kembalian = temp;
+          arrJumlahPecahan[i]++;
+        } else {
+          i++;
+        }
+      }
+      for (j in arrJumlahPecahan) {
+        if (arrJumlahPecahan[j] != 0)
+          console.log(arrJumlahPecahan[j] + "x " + arrPecahan[j]);
+      }
+    }
+
+    hitungKembalian(15500, 50000);
+    </script>
+  </body>
+</html>
